@@ -7,9 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 
 @Entity
-@Table(name = "microbuses")
+@Table(name = "microbuses", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"numero", "recorrido   "})})
 public class Micro {
 
     @Id
@@ -20,6 +23,8 @@ public class Micro {
     private String recorrido = null;
     @Column(name = "tipo", nullable = false)
     private TipoRecorrido tipo = TipoRecorrido.NORMAL;
+    @Column(name = "numero", nullable = false)
+    private String numero = null;
 
     public Long getId() {
         return id;
@@ -43,6 +48,14 @@ public class Micro {
 
     public void setTipo(TipoRecorrido tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     @Override

@@ -19,6 +19,7 @@ CREATE TABLE microbuses (
     pk bigserial NOT NULL,
     recorrido varchar(255) NOT NULL,
     tipo int NOT NULL  DEFAULT '0',
+    numero varchar(5) not null,
     UNIQUE (numero, recorrido),
     PRIMARY KEY (pk)
 );
